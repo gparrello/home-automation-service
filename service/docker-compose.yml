@@ -1,4 +1,7 @@
-# TODO: merge edge branch and change stack to point to master
+volumes:
+  homeassistant:
+  appdaemon:
+
 services:
   homeassistant:
     container_name: home-assistant
@@ -12,7 +15,7 @@ services:
       retries: 2
     volumes:
       - /run/dbus:/run/dbus:ro
-      - $DOCKER_DATA_PATH/$ENV/home-assistant/home-assistant/config:/config
+      - homeassistant:/config
     network_mode: host
     restart: unless-stopped
     dns:
@@ -30,7 +33,7 @@ services:
       timeout: 60s
       retries: 2
     volumes:
-      - $DOCKER_DATA_PATH/$ENV/home-assistant/appdaemon/conf:/conf
+      - appdaemon:/conf
     depends_on:
       - homeassistant
     network_mode: host
