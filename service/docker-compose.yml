@@ -53,7 +53,7 @@ services:
       timeout: 60s
       retries: 2
     volumes:
-      - appdaemon:/conf
+      - /config/appdaemon:/conf
     depends_on:
       - homeassistant
     network_mode: host
