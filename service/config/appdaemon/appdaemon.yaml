@@ -1,0 +1,14 @@
+appdaemon:
+  latitude: 0
+  longitude: 0
+  elevation: 30
+  time_zone: Europe/Madrid
+  plugins:
+    HASS:
+      type: hass
+      ha_url: http://home-assistant.lan
+http:
+  url: http://appdaemon.lan
+admin:
+api:
+hadashboard:
