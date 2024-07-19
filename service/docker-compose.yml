@@ -1,5 +1,4 @@
 volumes:
-  homeassistant:
   homeassistant-db:
   appdaemon:
 
