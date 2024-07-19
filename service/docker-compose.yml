@@ -1,10 +1,27 @@
 volumes:
   homeassistant:
+  homeassistant-db:
   appdaemon:
 
 services:
+  homeassistant-db:
+    restart: unless-stopped
+    image: postgres:13
+    container_name: homeassistant-db
+    environment:
+      TZ: Europe/Madrid
+      POSTGRES_DB: homeassistant
+      POSTGRES_USER: hauser
+      POSTGRES_PASSWORD: hapass
+    volumes:
+      - homeassistant-db:/var/lib/postgresql/data
+    dns:
+      - 10.80.0.2
+
   homeassistant:
-    container_name: home-assistant
+    depends_on:
+      - homeassistant-db
+    container_name: homeassistant
     image: homeassistant/home-assistant:latest
     environment:
       - TZ=Europe/Madrid
@@ -17,7 +34,7 @@ services:
       retries: 2
     volumes:
       - /run/dbus:/run/dbus:ro
-      - homeassistant:/config
+      - ./config/home-assistant:/config
     network_mode: host
     restart: unless-stopped
     dns:
