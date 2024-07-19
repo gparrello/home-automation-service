@@ -13,7 +13,6 @@ services:
       timeout: 60s
       retries: 2
     volumes:
-      - /etc/localtime:/etc/localtime:ro
       - /run/dbus:/run/dbus:ro
       - $DOCKER_DATA_PATH/$ENV/home-assistant/home-assistant/config:/config
     network_mode: host
@@ -35,7 +34,6 @@ services:
       timeout: 60s
       retries: 2
     volumes:
-      - /etc/localtime:/etc/localtime:ro
       - $DOCKER_DATA_PATH/$ENV/home-assistant/appdaemon/conf:/conf
     depends_on:
       - homeassistant
