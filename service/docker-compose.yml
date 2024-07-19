@@ -1,6 +1,5 @@
 volumes:
   homeassistant-db:
-  appdaemon:
 
 services:
   homeassistant-db:
@@ -53,7 +52,7 @@ services:
       timeout: 60s
       retries: 2
     volumes:
-      - /config/appdaemon:/conf
+      - ./config/appdaemon:/conf
     depends_on:
       - homeassistant
     network_mode: host
