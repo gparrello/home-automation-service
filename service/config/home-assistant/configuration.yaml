@@ -13,8 +13,8 @@ scene: !include scenes.yaml
 http:
   use_x_forwarded_for: true
   trusted_proxies:
-    - 10.53.0.0/24
     - 10.80.0.0/24
+    - 172.0.0.0/8
 
 recorder:
   db_url: !secret db_url
